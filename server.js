@@ -29,6 +29,7 @@ router.get("/swimlane_one", async (req, res) => {
   res.status(200).send({
     data: [
       {
+        id: 1,
         title: "Yellowstone",
         description:
           "Follow the violent world of the Dutton family, who controls the largest contiguous ranch in the United States. Led by their patriarch John Dutton, the family defends their property against constant attack by land developers, an Indian reservation, and America’s first National Park.",
@@ -37,8 +38,12 @@ router.get("/swimlane_one", async (req, res) => {
             url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6294745306001/thumbnail/landscape/poster?locale=en",
           },
         },
+        releaseDate: "2018-06-20T00:00:00Z",
+        releaseDateEpoch: 1529452800,
+        genres: ["Western", "Drama"],
       },
       {
+        id: 2,
         title: "Chernobyl",
         description:
           "The true story of one of the worst man-made catastrophes in history: the catastrophic nuclear accident at Chernobyl. A tale of the brave men and women who sacrificed to save Europe from unimaginable disaster.",
@@ -47,8 +52,12 @@ router.get("/swimlane_one", async (req, res) => {
             url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6294742097001/thumbnail/landscape/poster?locale=en",
           },
         },
+        releaseDate: "2019-05-06T00:00:00Z",
+        releaseDateEpoch: 1557100800,
+        genres: ["Drama"],
       },
       {
+        id: 3,
         title: "Station Eleven",
         description:
           "A post apocalyptic saga spanning multiple timelines telling the stories of survivors of a devastating flu as they attempt to rebuild and reimagine the world anew while holding on to the best of what's been lost.",
@@ -57,8 +66,12 @@ router.get("/swimlane_one", async (req, res) => {
             url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6294785527001/thumbnail/landscape/poster?locale=en",
           },
         },
+        releaseDate: "2021-12-16T00:00:00Z",
+        releaseDateEpoch: 1639612800,
+        genres: ["Drama", "Sci-Fi", "Fantasy"],
       },
       {
+        id: 4,
         title: "Curb Your Enthusiasm",
         description:
           "The off-kilter, unscripted comic vision of Larry David, who plays himself in a parallel universe in which he can't seem to do anything right, and, by his standards, neither can anyone else.",
@@ -67,8 +80,12 @@ router.get("/swimlane_one", async (req, res) => {
             url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6295148400001/thumbnail/landscape/poster?locale=en",
           },
         },
+        releaseDate: "2000-10-15T00:00:00Z",
+        releaseDateEpoch: 971568000,
+        genres: ["Comedy"],
       },
       {
+        id: 5,
         title: "The Terror",
         description:
           "A Royal Naval expedition voyages into unchartered territory as the crew attempts to discover the Northwest Passage. Faced with treacherous conditions, limited resources, dwindling hope and fear of the unknown, the crew is pushed to the brink of extinction.",
@@ -77,6 +94,9 @@ router.get("/swimlane_one", async (req, res) => {
             url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6295389680001/thumbnail/landscape/poster?locale=en",
           },
         },
+        releaseDate: "2018-04-26T00:00:00Z",
+        releaseDateEpoch: 1524700800,
+        genres: ["Mystery", "Drama", "Fantasy"],
       },
     ],
   });
@@ -87,7 +107,7 @@ router.post("/imagemock", async (req, res) => {
   try {
     res.status(200).send({
       image:
-        "https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmA6NA4u0UQ2HUDkZzIhoHFR/user-EvjNfLp4XB6oXxIgz3Mg8QYm/img-VDe5JGaHZsYyOSjGYkg2LJmg.png?st=2023-06-12T08%3A17%3A04Z&se=2023-06-12T10%3A17%3A04Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-06-11T20%3A41%3A02Z&ske=2023-06-12T20%3A41%3A02Z&sks=b&skv=2021-08-06&sig=HndIUOc%2BfoB3HVLmPMzY%2Beq24TUCBGGYMtBDVMTadZg%3D",
+        "https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmA6NA4u0UQ2HUDkZzIhoHFR/user-EvjNfLp4XB6oXxIgz3Mg8QYm/img-wbq8QyGJfg4Y7m2ute8FxXaj.png?st=2023-06-12T15%3A27%3A36Z&se=2023-06-12T17%3A27%3A36Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-06-12T03%3A59%3A49Z&ske=2023-06-13T03%3A59%3A49Z&sks=b&skv=2021-08-06&sig=yv28TLCMiNQGckWFRTvJXp43t6K6Q1hY1N6EXYOxcBU%3D",
     });
   } catch (error) {
     console.log(error);
