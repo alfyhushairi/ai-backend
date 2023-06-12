@@ -115,6 +115,42 @@ router.post("/imagemock", async (req, res) => {
   }
 });
 
+router.post("/promptwithtitle", async (req, res) => {
+  try {
+    const completionPrompt = req?.body?.prompt;
+    const completionResponse = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `${completionPrompt}`,
+      temperature: 0,
+      max_tokens: 64,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+      stop: ['"""'],
+    });
+
+    const imagePrompt = completionResponse.data.choices[0].text;
+    const imageResponse = await openai.createImage({
+      prompt: imagePrompt,
+      n: 1,
+      size: "1024x1024",
+    });
+
+    res.status(200).send({
+      completionPrompt: completionPrompt,
+      imagePrompt: imagePrompt,
+      image: imageResponse.data.data[0].url,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      status: error.response.status,
+      data: error.response.data,
+      error: error.message,
+    });
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const completionData = {
