@@ -25,6 +25,64 @@ router.get('/', async (req, res) => {
   })
 });
 
+router.get("/swimlane_one", async (req, res) => {
+  res.status(200).send({
+    data: [
+      {
+        title: "Yellowstone",
+        description:
+          "Follow the violent world of the Dutton family, who controls the largest contiguous ranch in the United States. Led by their patriarch John Dutton, the family defends their property against constant attack by land developers, an Indian reservation, and America’s first National Park.",
+        images: {
+          thumbnail: {
+            url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6294745306001/thumbnail/landscape/poster?locale=en",
+          },
+        },
+      },
+      {
+        title: "Chernobyl",
+        description:
+          "The true story of one of the worst man-made catastrophes in history: the catastrophic nuclear accident at Chernobyl. A tale of the brave men and women who sacrificed to save Europe from unimaginable disaster.",
+        images: {
+          thumbnail: {
+            url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6294742097001/thumbnail/landscape/poster?locale=en",
+          },
+        },
+      },
+      {
+        title: "Station Eleven",
+        description:
+          "A post apocalyptic saga spanning multiple timelines telling the stories of survivors of a devastating flu as they attempt to rebuild and reimagine the world anew while holding on to the best of what's been lost.",
+        images: {
+          thumbnail: {
+            url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6294785527001/thumbnail/landscape/poster?locale=en",
+          },
+        },
+      },
+      {
+        title: "Curb Your Enthusiasm",
+        description:
+          "The off-kilter, unscripted comic vision of Larry David, who plays himself in a parallel universe in which he can't seem to do anything right, and, by his standards, neither can anyone else.",
+        images: {
+          thumbnail: {
+            url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6295148400001/thumbnail/landscape/poster?locale=en",
+          },
+        },
+      },
+      {
+        title: "The Terror",
+        description:
+          "A Royal Naval expedition voyages into unchartered territory as the crew attempts to discover the Northwest Passage. Faced with treacherous conditions, limited resources, dwindling hope and fear of the unknown, the crew is pushed to the brink of extinction.",
+        images: {
+          thumbnail: {
+            url: "https://df110612.customer.static.core.one.accedo.tv/df11061288d03fc3/image/collection/6295389680001/thumbnail/landscape/poster?locale=en",
+          },
+        },
+      },
+    ],
+  });
+});
+
+
 router.post("/imagemock", async (req, res) => {
   try {
     res.status(200).send({
