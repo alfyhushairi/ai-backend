@@ -97,11 +97,14 @@ router.post("/imagemock", async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const prompt = req.body.prompt;
-
+    const completionData = {
+      title: req?.body?.title || '',
+      description: req?.body?.description || '',
+    };
+    const completionPrompt = processPrompt(completionData);
     const completionResponse = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `${prompt}`,
+      prompt: `${completionPrompt}`,
       temperature: 0,
       max_tokens: 64,
       top_p: 1,
@@ -110,23 +113,46 @@ router.post('/', async (req, res) => {
       stop: ['"""'],
     });
 
-    console.log("alfy completionResponse", completionResponse);
-
+    const imagePrompt = cleanUpPrompt(
+      completionData,
+      completionResponse.data.choices[0].text
+    );
     const imageResponse = await openai.createImage({
-      prompt: `${completionResponse.data.choices[0].text}`, //It doesn like (Anna Kendrick) for some reason
+      prompt: imagePrompt,
       n: 1,
       size: "1024x1024",
     });
-    console.log("alfy", imageResponse);
 
     res.status(200).send({
+      completionData: completionData,
+      completionPrompt: completionPrompt,
+      imagePrompt: imagePrompt,
       image: imageResponse.data.data[0].url,
-      // TODO also return both prompts and reqs
     });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ error });
+    res.status(400).send({
+      status: error.response.status,
+      data: error.response.data,
+      error: error.message
+     });
   }
 });
 
 app.listen(5000, () => console.log("Sever is running on port 5000"));
+
+const processPrompt = data => {
+  let finalData = `find the characters in the following summary "${data.description}"`;
+
+  return finalData;
+};
+
+const cleanUpPrompt = (originalData, data) => {
+  let cleanData = data;
+  cleanData = cleanData.replace(/ *\([^)]*\) */g, "");
+  cleanData = cleanData.replace(/\n/g, " ");
+
+  const finalData = `create a story with the characters ${cleanData} from the movie ${originalData.title}`;
+
+  return finalData;
+};
